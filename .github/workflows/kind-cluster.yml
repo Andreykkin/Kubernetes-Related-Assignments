@@ -1,0 +1,27 @@
+name: Build and Test with KinD
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  setup-kind-cluster:
+    name: Set up KinD Kubernetes Cluster
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Kubernetes KinD Cluster
+        id: kind
+        uses: helm/kind-action@v1
+        with:
+          registry: true
+          registry_name: kind-cluster
+          registry_port: 5001
+          registry_enable_delete: true
+          
+      - name: Verify Cluster Status
+        run: |
+          kubectl cluster-info --context kind-kind-cluster
+          kubectl get nodes -o wide
