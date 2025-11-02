@@ -14,9 +14,9 @@ jobs:
         uses: hiberbee/github-action-minikube@latest
       #- name: Get Minikube status
       #  run: minikube status
-      #- name: Get cluster info
+      - name: Get cluster info
         run: kubectl cluster-info
-      - name: Get Kubernetes pods
+      #- name: Get Kubernetes pods
       #  run: kubectl get services --all-namespaces
       #- name: Get Minikube IP
       #  run: echo ${{ steps.minikube.outputs.ip }}
