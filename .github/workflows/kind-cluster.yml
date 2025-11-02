@@ -17,3 +17,7 @@ jobs:
           registry_name: kind-cluster
           registry_port: 5001
           registry_enable_delete: true
+      - name: Get Nodes
+        run: kubectl get nodes
+      - name: Get cluster info
+        run: kubectl cluster-info
